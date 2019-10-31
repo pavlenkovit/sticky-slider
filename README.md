@@ -30,6 +30,7 @@ npm i node-sass
 
 Получился такой package.json:
 
+`package.json`
 ```json
 {
   "name": "sticky-slider",
@@ -43,16 +44,69 @@ npm i node-sass
     "react-scripts": "3.2.0",
     "swiper": "^5.2.0"
   },
-  ...
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
+
 ```
 
 Отлично, теперь приступаем к реализации слайдера.
 
 ## Создаем простой слайдер
 
-Начнем с того, что создадим обычный слайдер с эффектами по умолчанию и опишем его внешний вид.
+Начнем с того, что создадим небольшой файлик с нашими слайдами.
 
+`data.json`
+```json
+[
+  {
+    "title": "Slide 1"
+  },
+  {
+    "title": "Slide 2"
+  },
+  {
+    "title": "Slide 3"
+  },
+  {
+    "title": "Slide 4"
+  },
+  {
+    "title": "Slide 5"
+  },
+  {
+    "title": "Slide 6"
+  },
+  {
+    "title": "Slide 7"
+  }
+]
+
+```
+
+
+После этого слелаем обычный слайдер с эффектами по умолчанию и опишем его внешний вид.
+
+`src/components/StickySlider/StickySlider.jsx`
 ```javascript
 import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
@@ -62,32 +116,15 @@ import Slide from '../Slide';
 import data from '../../data';
 
 const StickySlider = () => {
-  const [swiper, updateSwiper] = useState(null);
-  const [translate, updateTranslate] = useState(0);
-  const [transition, updateTransition] = useState(0);
-
   const params = {
     slidesPerView: 3,
   };
 
-  useEffect(() => {
-    if (swiper) {
-      swiper.on('setTranslate', updateTranslate);
-      swiper.on('setTransition', updateTransition);
-    }
-  }, [swiper]);
-
   return (
-    <Swiper getSwiper={updateSwiper} {...params}>
+    <Swiper {...params}>
       {data.map((item, idx) => (
         <div key={idx}>
-          <Slide
-            translate={translate}
-            transition={transition}
-            color={item.color}
-          >
-            {item.title}
-          </Slide>
+          {item.title}
         </div>
       ))}
     </Swiper>
@@ -97,3 +134,5 @@ const StickySlider = () => {
 export default StickySlider;
 
 ```
+
+Единственный параметр, который мы описали – это `slidesPerView` (количество видимых слайдов). Нам больше ничего не понадовится, но все возможные параметры свайпера можно посмотреть [здесь](https://swiperjs.com/api/). 
