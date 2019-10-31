@@ -1,0 +1,22 @@
+.container {
+  transform-origin: 0 50%;
+  margin: 0 1em;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  transition-property: opacity, transform;
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 50% 0;
+  background: lightblue;
+}
+
+.footer {
+  color: #333;
+  font-weight: 700;
+  font-size: 1.25em;
+  text-align: center;
+  padding: 1em;
+}
