@@ -1,8 +1,6 @@
 import React from 'react';
-
-import css from './App.module.scss';
-
 import StickySlider from './components/StickySlider';
+import css from './App.module.scss';
 
 const App = () => {
   return (
