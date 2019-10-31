@@ -12,7 +12,6 @@ const StickySlider = () => {
 
   const params = {
     slidesPerView: 3,
-    speed: 400,
   };
 
   useEffect(() => {
