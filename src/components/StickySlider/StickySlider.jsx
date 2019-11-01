@@ -16,8 +16,12 @@ const StickySlider = () => {
 
   useEffect(() => {
     if (swiper) {
-      swiper.on('setTranslate', updateTranslate);
-      swiper.on('setTransition', updateTransition);
+      swiper.on('setTranslate', (t) => {
+        updateTranslate(t);
+      });
+      swiper.on('setTransition', (t) => {
+        updateTransition(t);
+      });
     }
   }, [swiper]);
 

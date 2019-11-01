@@ -17,7 +17,7 @@ const Slide = ({ children, translate, transition, color }) => {
   const x = -translate - offsetLeft;
   const k = 1 - x / width; // [0 : 1]
 
-  let style = x >= -1 ? {
+  const style = x >= -1 ? {
     transform: `translateX(${x}px) scale(${k * 0.2 + 0.8})`, // [0.8 : 1]
     opacity: k < 0 ? 0 : k * 0.5 + 0.5, // [0.5 : 1]
     transition: `${transition}ms`,
